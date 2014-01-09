@@ -1,0 +1,16 @@
+package joptionpane.tutorial1;
+import javax.swing.*;
+
+public class JoptionPaneTutorial1 {
+
+    
+    public static void main(String[] args) {
+        int a=0;
+        try{
+        a=Integer.parseInt(JOptionPane.showInputDialog(null,"Enter your Number: ","Input Number",JOptionPane.INFORMATION_MESSAGE));
+        JOptionPane.showMessageDialog(null,"Input Number Was: "+ a, "Result:",JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch(Exception e)
+        {JOptionPane.showMessageDialog(null,"Error: "+e,"Input Error:",JOptionPane.ERROR_MESSAGE);}
+    }
+}
