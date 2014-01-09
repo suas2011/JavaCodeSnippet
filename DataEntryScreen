@@ -1,0 +1,107 @@
+package ereportingsystem;
+
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Dimension;
+import javax.swing.JOptionPane;
+
+
+public class Usercontrol extends javax.swing.JFrame {
+
+    private Toolkit t;
+    private Dimension d;
+
+    
+    public Usercontrol() {
+        initComponents();
+        lblIndOther.setVisible(false);
+        txtIndOther.setVisible(false);
+        buttonGroup1.add(jRadioButton1);
+        buttonGroup1.add(jRadioButton2);
+       buttonGroup2.add(jRadioButton3);
+       buttonGroup2.add(jRadioButton4);
+        t = getToolkit();
+        d = t.getScreenSize();
+        setLocation(d.width / 2 - getWidth() / 2, d.height / 2 - getHeight() / 2);
+
+
+    }
+
+private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        
+        String value = jComboBox1.getSelectedItem().toString();
+        String concat;
+        concat = jTextField4.getText() + value;
+        System.out.println("Field is : " + concat);
+    }                      
+    
+    
+     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+        if ((jComboBox2.getSelectedItem() == "Miss") || (jComboBox2.getSelectedItem() == "Mrs") || (jComboBox2.getSelectedItem() == "Ms")) {
+
+            jRadioButton2.setEnabled(false);
+            jRadioButton1.setEnabled(true);
+
+        } else if (jComboBox2.getSelectedItem() == "Mr") {
+
+            jRadioButton1.setEnabled(false);
+            jRadioButton2.setEnabled(true);
+
+            
+        } else if ((jComboBox2.getSelectedItem()=="Dr")||(jComboBox2.getSelectedItem()=="Prof")||(jComboBox2.getSelectedItem()=="Syed")){   //(jComboBox2.getSelectedItem()=="Syed"){
+            String salutation=""; 
+            salutation= JOptionPane.showInputDialog(null, "1- Female \n 2- Male\n\n Enter Your Choice:","Choose Your Gender From The Choices Below:", JOptionPane.INFORMATION_MESSAGE);
+            // salutation = JOptionPane.showInputDialog(null, "If you are a Doctor/Syed/Professor. Enter your Salutation.", "Enter Salutation.", JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"You Have Selected/Input: "+salutation);
+        } 
+         
+            else {
+
+            JOptionPane.showMessageDialog(null, "Select Valid Gender From the Salutation List.", "Gender Mismatched", JOptionPane.ERROR_MESSAGE);
+            jRadioButton1.setEnabled(false);
+            jRadioButton2.setEnabled(false);
+
+        }
+
+    }   
+    
+    
+     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+ String indValue;
+ if(jComboBox6.getSelectedItem()=="Others"){
+     lblIndOther.setVisible(true);
+     txtIndOther.setVisible(true);
+     
+ }
+ else {
+ 
+ lblIndOther.setVisible(false);
+ txtIndOther.setVisible(false);
+ 
+ }
+    }                 
+    
+    
+   private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {                                        
+if(jTextField1.getText().length()>10){ //empty check starts here
+    jTextField1.setBackground(Color.green);
+    
+    JOptionPane.showMessageDialog(null,"Field length must be 10 characters long.!","Length Error:",JOptionPane.ERROR_MESSAGE);
+    jTextField1.setBackground(Color.WHITE);
+    jTextField1.setText(" ");
+    
+    }        
+    }                                
+    
+    
+     public static void main(String args[]) {
+        
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Usercontrol().setVisible(true);
+            }
+        });
+    }
+   
